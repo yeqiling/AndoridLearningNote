@@ -1,0 +1,47 @@
+ÿş &cls
+@echo off
+color 0d
+mode con:cols=80 lines=25
+title Tender`Android·´±àÒë  pay520@vip.qq.com
+
+echo                   »¶Ó­Ê¹ÓÃAPKTool·´±àÒë¹¤¾ß ¡¾Tender`QQÈº92373992¡¿  
+
+:ss
+echo Çë°´ÒªÇóÑ¡Ôñ:1·´±àÒë 2±àÒë 3Ç©Ãû
+set/p var=ÇëÑ¡Ôñ£º
+if %var% equ 1 goto a
+if %var% equ 2 goto b
+if %var% equ 3 goto c
+
+cls
+goto ss
+:a
+java -jar "apktool.jar" d *.apk Yelp
+ECHO.  ·´±àÒëÍê³É£¡
+pause >nul
+exit
+:b
+ECHO.==========================
+ECHO.  ApkTool By:Tender
+ECHO.==========================
+ECHO.
+ECHO.I: ¿ªÊ¼»Ø±àÒë...
+java -jar "%~dp0apktool.jar" b Yelp
+IF %ERRORLEVEL% == 1 GOTO :ERROR
+rename Yelp\build ÒÑ±àÒë>NUL 2>NUL
+move Yelp\build\apk Yelp\ÒÑ±àÒë\ >NUL 2>NUL
+move Yelp\dist\*.* Yelp\ÒÑ±àÒë\>NUL 2>NUL
+rd /s /q Yelp\dist\ >NUL 2>NUL
+rd /s /q Yelp\build\ >NUL 2>NUL
+ECHO. Íê³É 
+ECHO. Çë²é¿´¡®Yelp\ÒÑ±àÒë¡¯Ä¿Â¼ÀïµÄÎÄ¼ş£¡
+PING -N 5 127.1>NUL
+pause>nul
+exit
+:c
+ECHO.Ç©ÃûÇ°ĞŞ¸ÄAPKÎªYelp.apk£¨²»Çø·Ö´óĞ¡Ğ´£©£¬È»ºóÔËĞĞ
+java -jar signapk.jar testkey.x509.pem testkey.pk8 Yelp.apk Yelp_OK.apk
+Echo Signing Complete 
+ECHO.Ç©ÃûÍê³É£¡
+Pause
+exit

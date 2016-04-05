@@ -1,0 +1,1126 @@
+.class Lcom/squareup/okhttp/internal/spdy/Huffman;
+.super Ljava/lang/Object;
+.source "Huffman.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+    }
+.end annotation
+
+
+# static fields
+.field private static final CODES:[I
+
+.field private static final CODE_LENGTHS:[B
+
+.field private static final INSTANCE:Lcom/squareup/okhttp/internal/spdy/Huffman;
+
+
+# instance fields
+.field private final root:Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 2
+
+    .prologue
+    const/16 v1, 0x100
+
+    .line 35
+    new-array v0, v1, [I
+
+    fill-array-data v0, :array_0
+
+    sput-object v0, Lcom/squareup/okhttp/internal/spdy/Huffman;->CODES:[I
+
+    .line 63
+    new-array v0, v1, [B
+
+    fill-array-data v0, :array_1
+
+    sput-object v0, Lcom/squareup/okhttp/internal/spdy/Huffman;->CODE_LENGTHS:[B
+
+    .line 77
+    new-instance v0, Lcom/squareup/okhttp/internal/spdy/Huffman;
+
+    invoke-direct {v0}, Lcom/squareup/okhttp/internal/spdy/Huffman;-><init>()V
+
+    sput-object v0, Lcom/squareup/okhttp/internal/spdy/Huffman;->INSTANCE:Lcom/squareup/okhttp/internal/spdy/Huffman;
+
+    return-void
+
+    .line 35
+    :array_0
+    .array-data 0x4
+        0xf8t 0x1ft 0x0t 0x0t
+        0xd8t 0xfft 0x7ft 0x0t
+        0xe2t 0xfft 0xfft 0xft
+        0xe3t 0xfft 0xfft 0xft
+        0xe4t 0xfft 0xfft 0xft
+        0xe5t 0xfft 0xfft 0xft
+        0xe6t 0xfft 0xfft 0xft
+        0xe7t 0xfft 0xfft 0xft
+        0xe8t 0xfft 0xfft 0xft
+        0xeat 0xfft 0xfft 0x0t
+        0xfct 0xfft 0xfft 0x3ft
+        0xe9t 0xfft 0xfft 0xft
+        0xeat 0xfft 0xfft 0xft
+        0xfdt 0xfft 0xfft 0x3ft
+        0xebt 0xfft 0xfft 0xft
+        0xect 0xfft 0xfft 0xft
+        0xedt 0xfft 0xfft 0xft
+        0xeet 0xfft 0xfft 0xft
+        0xeft 0xfft 0xfft 0xft
+        0xf0t 0xfft 0xfft 0xft
+        0xf1t 0xfft 0xfft 0xft
+        0xf2t 0xfft 0xfft 0xft
+        0xfet 0xfft 0xfft 0x3ft
+        0xf3t 0xfft 0xfft 0xft
+        0xf4t 0xfft 0xfft 0xft
+        0xf5t 0xfft 0xfft 0xft
+        0xf6t 0xfft 0xfft 0xft
+        0xf7t 0xfft 0xfft 0xft
+        0xf8t 0xfft 0xfft 0xft
+        0xf9t 0xfft 0xfft 0xft
+        0xfat 0xfft 0xfft 0xft
+        0xfbt 0xfft 0xfft 0xft
+        0x14t 0x0t 0x0t 0x0t
+        0xf8t 0x3t 0x0t 0x0t
+        0xf9t 0x3t 0x0t 0x0t
+        0xfat 0xft 0x0t 0x0t
+        0xf9t 0x1ft 0x0t 0x0t
+        0x15t 0x0t 0x0t 0x0t
+        0xf8t 0x0t 0x0t 0x0t
+        0xfat 0x7t 0x0t 0x0t
+        0xfat 0x3t 0x0t 0x0t
+        0xfbt 0x3t 0x0t 0x0t
+        0xf9t 0x0t 0x0t 0x0t
+        0xfbt 0x7t 0x0t 0x0t
+        0xfat 0x0t 0x0t 0x0t
+        0x16t 0x0t 0x0t 0x0t
+        0x17t 0x0t 0x0t 0x0t
+        0x18t 0x0t 0x0t 0x0t
+        0x0t 0x0t 0x0t 0x0t
+        0x1t 0x0t 0x0t 0x0t
+        0x2t 0x0t 0x0t 0x0t
+        0x19t 0x0t 0x0t 0x0t
+        0x1at 0x0t 0x0t 0x0t
+        0x1bt 0x0t 0x0t 0x0t
+        0x1ct 0x0t 0x0t 0x0t
+        0x1dt 0x0t 0x0t 0x0t
+        0x1et 0x0t 0x0t 0x0t
+        0x1ft 0x0t 0x0t 0x0t
+        0x5ct 0x0t 0x0t 0x0t
+        0xfbt 0x0t 0x0t 0x0t
+        0xfct 0x7ft 0x0t 0x0t
+        0x20t 0x0t 0x0t 0x0t
+        0xfbt 0xft 0x0t 0x0t
+        0xfct 0x3t 0x0t 0x0t
+        0xfat 0x1ft 0x0t 0x0t
+        0x21t 0x0t 0x0t 0x0t
+        0x5dt 0x0t 0x0t 0x0t
+        0x5et 0x0t 0x0t 0x0t
+        0x5ft 0x0t 0x0t 0x0t
+        0x60t 0x0t 0x0t 0x0t
+        0x61t 0x0t 0x0t 0x0t
+        0x62t 0x0t 0x0t 0x0t
+        0x63t 0x0t 0x0t 0x0t
+        0x64t 0x0t 0x0t 0x0t
+        0x65t 0x0t 0x0t 0x0t
+        0x66t 0x0t 0x0t 0x0t
+        0x67t 0x0t 0x0t 0x0t
+        0x68t 0x0t 0x0t 0x0t
+        0x69t 0x0t 0x0t 0x0t
+        0x6at 0x0t 0x0t 0x0t
+        0x6bt 0x0t 0x0t 0x0t
+        0x6ct 0x0t 0x0t 0x0t
+        0x6dt 0x0t 0x0t 0x0t
+        0x6et 0x0t 0x0t 0x0t
+        0x6ft 0x0t 0x0t 0x0t
+        0x70t 0x0t 0x0t 0x0t
+        0x71t 0x0t 0x0t 0x0t
+        0x72t 0x0t 0x0t 0x0t
+        0xfct 0x0t 0x0t 0x0t
+        0x73t 0x0t 0x0t 0x0t
+        0xfdt 0x0t 0x0t 0x0t
+        0xfbt 0x1ft 0x0t 0x0t
+        0xf0t 0xfft 0x7t 0x0t
+        0xfct 0x1ft 0x0t 0x0t
+        0xfct 0x3ft 0x0t 0x0t
+        0x22t 0x0t 0x0t 0x0t
+        0xfdt 0x7ft 0x0t 0x0t
+        0x3t 0x0t 0x0t 0x0t
+        0x23t 0x0t 0x0t 0x0t
+        0x4t 0x0t 0x0t 0x0t
+        0x24t 0x0t 0x0t 0x0t
+        0x5t 0x0t 0x0t 0x0t
+        0x25t 0x0t 0x0t 0x0t
+        0x26t 0x0t 0x0t 0x0t
+        0x27t 0x0t 0x0t 0x0t
+        0x6t 0x0t 0x0t 0x0t
+        0x74t 0x0t 0x0t 0x0t
+        0x75t 0x0t 0x0t 0x0t
+        0x28t 0x0t 0x0t 0x0t
+        0x29t 0x0t 0x0t 0x0t
+        0x2at 0x0t 0x0t 0x0t
+        0x7t 0x0t 0x0t 0x0t
+        0x2bt 0x0t 0x0t 0x0t
+        0x76t 0x0t 0x0t 0x0t
+        0x2ct 0x0t 0x0t 0x0t
+        0x8t 0x0t 0x0t 0x0t
+        0x9t 0x0t 0x0t 0x0t
+        0x2dt 0x0t 0x0t 0x0t
+        0x77t 0x0t 0x0t 0x0t
+        0x78t 0x0t 0x0t 0x0t
+        0x79t 0x0t 0x0t 0x0t
+        0x7at 0x0t 0x0t 0x0t
+        0x7bt 0x0t 0x0t 0x0t
+        0xfet 0x7ft 0x0t 0x0t
+        0xfct 0x7t 0x0t 0x0t
+        0xfdt 0x3ft 0x0t 0x0t
+        0xfdt 0x1ft 0x0t 0x0t
+        0xfct 0xfft 0xfft 0xft
+        0xe6t 0xfft 0xft 0x0t
+        0xd2t 0xfft 0x3ft 0x0t
+        0xe7t 0xfft 0xft 0x0t
+        0xe8t 0xfft 0xft 0x0t
+        0xd3t 0xfft 0x3ft 0x0t
+        0xd4t 0xfft 0x3ft 0x0t
+        0xd5t 0xfft 0x3ft 0x0t
+        0xd9t 0xfft 0x7ft 0x0t
+        0xd6t 0xfft 0x3ft 0x0t
+        0xdat 0xfft 0x7ft 0x0t
+        0xdbt 0xfft 0x7ft 0x0t
+        0xdct 0xfft 0x7ft 0x0t
+        0xddt 0xfft 0x7ft 0x0t
+        0xdet 0xfft 0x7ft 0x0t
+        0xebt 0xfft 0xfft 0x0t
+        0xdft 0xfft 0x7ft 0x0t
+        0xect 0xfft 0xfft 0x0t
+        0xedt 0xfft 0xfft 0x0t
+        0xd7t 0xfft 0x3ft 0x0t
+        0xe0t 0xfft 0x7ft 0x0t
+        0xeet 0xfft 0xfft 0x0t
+        0xe1t 0xfft 0x7ft 0x0t
+        0xe2t 0xfft 0x7ft 0x0t
+        0xe3t 0xfft 0x7ft 0x0t
+        0xe4t 0xfft 0x7ft 0x0t
+        0xdct 0xfft 0x1ft 0x0t
+        0xd8t 0xfft 0x3ft 0x0t
+        0xe5t 0xfft 0x7ft 0x0t
+        0xd9t 0xfft 0x3ft 0x0t
+        0xe6t 0xfft 0x7ft 0x0t
+        0xe7t 0xfft 0x7ft 0x0t
+        0xeft 0xfft 0xfft 0x0t
+        0xdat 0xfft 0x3ft 0x0t
+        0xddt 0xfft 0x1ft 0x0t
+        0xe9t 0xfft 0xft 0x0t
+        0xdbt 0xfft 0x3ft 0x0t
+        0xdct 0xfft 0x3ft 0x0t
+        0xe8t 0xfft 0x7ft 0x0t
+        0xe9t 0xfft 0x7ft 0x0t
+        0xdet 0xfft 0x1ft 0x0t
+        0xeat 0xfft 0x7ft 0x0t
+        0xddt 0xfft 0x3ft 0x0t
+        0xdet 0xfft 0x3ft 0x0t
+        0xf0t 0xfft 0xfft 0x0t
+        0xdft 0xfft 0x1ft 0x0t
+        0xdft 0xfft 0x3ft 0x0t
+        0xebt 0xfft 0x7ft 0x0t
+        0xect 0xfft 0x7ft 0x0t
+        0xe0t 0xfft 0x1ft 0x0t
+        0xe1t 0xfft 0x1ft 0x0t
+        0xe0t 0xfft 0x3ft 0x0t
+        0xe2t 0xfft 0x1ft 0x0t
+        0xedt 0xfft 0x7ft 0x0t
+        0xe1t 0xfft 0x3ft 0x0t
+        0xeet 0xfft 0x7ft 0x0t
+        0xeft 0xfft 0x7ft 0x0t
+        0xeat 0xfft 0xft 0x0t
+        0xe2t 0xfft 0x3ft 0x0t
+        0xe3t 0xfft 0x3ft 0x0t
+        0xe4t 0xfft 0x3ft 0x0t
+        0xf0t 0xfft 0x7ft 0x0t
+        0xe5t 0xfft 0x3ft 0x0t
+        0xe6t 0xfft 0x3ft 0x0t
+        0xf1t 0xfft 0x7ft 0x0t
+        0xe0t 0xfft 0xfft 0x3t
+        0xe1t 0xfft 0xfft 0x3t
+        0xebt 0xfft 0xft 0x0t
+        0xf1t 0xfft 0x7t 0x0t
+        0xe7t 0xfft 0x3ft 0x0t
+        0xf2t 0xfft 0x7ft 0x0t
+        0xe8t 0xfft 0x3ft 0x0t
+        0xect 0xfft 0xfft 0x1t
+        0xe2t 0xfft 0xfft 0x3t
+        0xe3t 0xfft 0xfft 0x3t
+        0xe4t 0xfft 0xfft 0x3t
+        0xdet 0xfft 0xfft 0x7t
+        0xdft 0xfft 0xfft 0x7t
+        0xe5t 0xfft 0xfft 0x3t
+        0xf1t 0xfft 0xfft 0x0t
+        0xedt 0xfft 0xfft 0x1t
+        0xf2t 0xfft 0x7t 0x0t
+        0xe3t 0xfft 0x1ft 0x0t
+        0xe6t 0xfft 0xfft 0x3t
+        0xe0t 0xfft 0xfft 0x7t
+        0xe1t 0xfft 0xfft 0x7t
+        0xe7t 0xfft 0xfft 0x3t
+        0xe2t 0xfft 0xfft 0x7t
+        0xf2t 0xfft 0xfft 0x0t
+        0xe4t 0xfft 0x1ft 0x0t
+        0xe5t 0xfft 0x1ft 0x0t
+        0xe8t 0xfft 0xfft 0x3t
+        0xe9t 0xfft 0xfft 0x3t
+        0xfdt 0xfft 0xfft 0xft
+        0xe3t 0xfft 0xfft 0x7t
+        0xe4t 0xfft 0xfft 0x7t
+        0xe5t 0xfft 0xfft 0x7t
+        0xect 0xfft 0xft 0x0t
+        0xf3t 0xfft 0xfft 0x0t
+        0xedt 0xfft 0xft 0x0t
+        0xe6t 0xfft 0x1ft 0x0t
+        0xe9t 0xfft 0x3ft 0x0t
+        0xe7t 0xfft 0x1ft 0x0t
+        0xe8t 0xfft 0x1ft 0x0t
+        0xf3t 0xfft 0x7ft 0x0t
+        0xeat 0xfft 0x3ft 0x0t
+        0xebt 0xfft 0x3ft 0x0t
+        0xeet 0xfft 0xfft 0x1t
+        0xeft 0xfft 0xfft 0x1t
+        0xf4t 0xfft 0xfft 0x0t
+        0xf5t 0xfft 0xfft 0x0t
+        0xeat 0xfft 0xfft 0x3t
+        0xf4t 0xfft 0x7ft 0x0t
+        0xebt 0xfft 0xfft 0x3t
+        0xe6t 0xfft 0xfft 0x7t
+        0xect 0xfft 0xfft 0x3t
+        0xedt 0xfft 0xfft 0x3t
+        0xe7t 0xfft 0xfft 0x7t
+        0xe8t 0xfft 0xfft 0x7t
+        0xe9t 0xfft 0xfft 0x7t
+        0xeat 0xfft 0xfft 0x7t
+        0xebt 0xfft 0xfft 0x7t
+        0xfet 0xfft 0xfft 0xft
+        0xect 0xfft 0xfft 0x7t
+        0xedt 0xfft 0xfft 0x7t
+        0xeet 0xfft 0xfft 0x7t
+        0xeft 0xfft 0xfft 0x7t
+        0xf0t 0xfft 0xfft 0x7t
+        0xeet 0xfft 0xfft 0x3t
+    .end array-data
+
+    .line 63
+    :array_1
+    .array-data 0x1
+        0xdt
+        0x17t
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x18t
+        0x1et
+        0x1ct
+        0x1ct
+        0x1et
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1et
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x1ct
+        0x6t
+        0xat
+        0xat
+        0xct
+        0xdt
+        0x6t
+        0x8t
+        0xbt
+        0xat
+        0xat
+        0x8t
+        0xbt
+        0x8t
+        0x6t
+        0x6t
+        0x6t
+        0x5t
+        0x5t
+        0x5t
+        0x6t
+        0x6t
+        0x6t
+        0x6t
+        0x6t
+        0x6t
+        0x6t
+        0x7t
+        0x8t
+        0xft
+        0x6t
+        0xct
+        0xat
+        0xdt
+        0x6t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x8t
+        0x7t
+        0x8t
+        0xdt
+        0x13t
+        0xdt
+        0xet
+        0x6t
+        0xft
+        0x5t
+        0x6t
+        0x5t
+        0x6t
+        0x5t
+        0x6t
+        0x6t
+        0x6t
+        0x5t
+        0x7t
+        0x7t
+        0x6t
+        0x6t
+        0x6t
+        0x5t
+        0x6t
+        0x7t
+        0x6t
+        0x5t
+        0x5t
+        0x6t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0x7t
+        0xft
+        0xbt
+        0xet
+        0xdt
+        0x1ct
+        0x14t
+        0x16t
+        0x14t
+        0x14t
+        0x16t
+        0x16t
+        0x16t
+        0x17t
+        0x16t
+        0x17t
+        0x17t
+        0x17t
+        0x17t
+        0x17t
+        0x18t
+        0x17t
+        0x18t
+        0x18t
+        0x16t
+        0x17t
+        0x18t
+        0x17t
+        0x17t
+        0x17t
+        0x17t
+        0x15t
+        0x16t
+        0x17t
+        0x16t
+        0x17t
+        0x17t
+        0x18t
+        0x16t
+        0x15t
+        0x14t
+        0x16t
+        0x16t
+        0x17t
+        0x17t
+        0x15t
+        0x17t
+        0x16t
+        0x16t
+        0x18t
+        0x15t
+        0x16t
+        0x17t
+        0x17t
+        0x15t
+        0x15t
+        0x16t
+        0x15t
+        0x17t
+        0x16t
+        0x17t
+        0x17t
+        0x14t
+        0x16t
+        0x16t
+        0x16t
+        0x17t
+        0x16t
+        0x16t
+        0x17t
+        0x1at
+        0x1at
+        0x14t
+        0x13t
+        0x16t
+        0x17t
+        0x16t
+        0x19t
+        0x1at
+        0x1at
+        0x1at
+        0x1bt
+        0x1bt
+        0x1at
+        0x18t
+        0x19t
+        0x13t
+        0x15t
+        0x1at
+        0x1bt
+        0x1bt
+        0x1at
+        0x1bt
+        0x18t
+        0x15t
+        0x15t
+        0x1at
+        0x1at
+        0x1ct
+        0x1bt
+        0x1bt
+        0x1bt
+        0x14t
+        0x18t
+        0x14t
+        0x15t
+        0x16t
+        0x15t
+        0x15t
+        0x17t
+        0x16t
+        0x16t
+        0x19t
+        0x19t
+        0x18t
+        0x18t
+        0x1at
+        0x17t
+        0x1at
+        0x1bt
+        0x1at
+        0x1at
+        0x1bt
+        0x1bt
+        0x1bt
+        0x1bt
+        0x1bt
+        0x1ct
+        0x1bt
+        0x1bt
+        0x1bt
+        0x1bt
+        0x1bt
+        0x1at
+    .end array-data
+.end method
+
+.method private constructor <init>()V
+    .locals 1
+
+    .prologue
+    .line 85
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 83
+    new-instance v0, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    invoke-direct {v0}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;-><init>()V
+
+    iput-object v0, p0, Lcom/squareup/okhttp/internal/spdy/Huffman;->root:Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    .line 86
+    invoke-direct {p0}, Lcom/squareup/okhttp/internal/spdy/Huffman;->buildTree()V
+
+    .line 87
+    return-void
+.end method
+
+.method private addCode(IIB)V
+    .locals 8
+    .parameter "sym"
+    .parameter "code"
+    .parameter "len"
+
+    .prologue
+    .line 171
+    new-instance v5, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    invoke-direct {v5, p1, p3}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;-><init>(II)V
+
+    .line 173
+    .local v5, terminal:Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+    iget-object v0, p0, Lcom/squareup/okhttp/internal/spdy/Huffman;->root:Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    .line 174
+    .local v0, current:Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+    :goto_0
+    const/16 v6, 0x8
+
+    if-le p3, v6, :cond_2
+
+    .line 175
+    add-int/lit8 v6, p3, -0x8
+
+    int-to-byte p3, v6
+
+    .line 176
+    ushr-int v6, p2, p3
+
+    and-int/lit16 v2, v6, 0xff
+
+    .line 177
+    .local v2, i:I
+    #getter for: Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->children:[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+    invoke-static {v0}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->access$000(Lcom/squareup/okhttp/internal/spdy/Huffman$Node;)[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    move-result-object v6
+
+    if-nez v6, :cond_0
+
+    .line 178
+    new-instance v6, Ljava/lang/IllegalStateException;
+
+    const-string v7, "invalid dictionary: prefix not unique"
+
+    invoke-direct {v6, v7}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v6
+
+    .line 180
+    :cond_0
+    #getter for: Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->children:[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+    invoke-static {v0}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->access$000(Lcom/squareup/okhttp/internal/spdy/Huffman$Node;)[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    move-result-object v6
+
+    aget-object v6, v6, v2
+
+    if-nez v6, :cond_1
+
+    .line 181
+    #getter for: Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->children:[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+    invoke-static {v0}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->access$000(Lcom/squareup/okhttp/internal/spdy/Huffman$Node;)[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    move-result-object v6
+
+    new-instance v7, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    invoke-direct {v7}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;-><init>()V
+
+    aput-object v7, v6, v2
+
+    .line 183
+    :cond_1
+    #getter for: Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->children:[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+    invoke-static {v0}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->access$000(Lcom/squareup/okhttp/internal/spdy/Huffman$Node;)[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    move-result-object v6
+
+    aget-object v0, v6, v2
+
+    .line 184
+    goto :goto_0
+
+    .line 186
+    .end local v2           #i:I
+    :cond_2
+    rsub-int/lit8 v3, p3, 0x8
+
+    .line 187
+    .local v3, shift:I
+    shl-int v6, p2, v3
+
+    and-int/lit16 v4, v6, 0xff
+
+    .line 188
+    .local v4, start:I
+    const/4 v6, 0x1
+
+    shl-int v1, v6, v3
+
+    .line 189
+    .local v1, end:I
+    move v2, v4
+
+    .restart local v2       #i:I
+    :goto_1
+    add-int v6, v4, v1
+
+    if-ge v2, v6, :cond_3
+
+    .line 190
+    #getter for: Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->children:[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+    invoke-static {v0}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->access$000(Lcom/squareup/okhttp/internal/spdy/Huffman$Node;)[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    move-result-object v6
+
+    aput-object v5, v6, v2
+
+    .line 189
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_1
+
+    .line 192
+    :cond_3
+    return-void
+.end method
+
+.method private buildTree()V
+    .locals 3
+
+    .prologue
+    .line 165
+    const/4 v0, 0x0
+
+    .local v0, i:I
+    :goto_0
+    sget-object v1, Lcom/squareup/okhttp/internal/spdy/Huffman;->CODE_LENGTHS:[B
+
+    array-length v1, v1
+
+    if-ge v0, v1, :cond_0
+
+    .line 166
+    sget-object v1, Lcom/squareup/okhttp/internal/spdy/Huffman;->CODES:[I
+
+    aget v1, v1, v0
+
+    sget-object v2, Lcom/squareup/okhttp/internal/spdy/Huffman;->CODE_LENGTHS:[B
+
+    aget-byte v2, v2, v0
+
+    invoke-direct {p0, v0, v1, v2}, Lcom/squareup/okhttp/internal/spdy/Huffman;->addCode(IIB)V
+
+    .line 165
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_0
+
+    .line 168
+    :cond_0
+    return-void
+.end method
+
+.method public static get()Lcom/squareup/okhttp/internal/spdy/Huffman;
+    .locals 1
+
+    .prologue
+    .line 80
+    sget-object v0, Lcom/squareup/okhttp/internal/spdy/Huffman;->INSTANCE:Lcom/squareup/okhttp/internal/spdy/Huffman;
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method decode([B)[B
+    .locals 8
+    .parameter "buf"
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+
+    .prologue
+    .line 127
+    new-instance v1, Ljava/io/ByteArrayOutputStream;
+
+    invoke-direct {v1}, Ljava/io/ByteArrayOutputStream;-><init>()V
+
+    .line 128
+    .local v1, baos:Ljava/io/ByteArrayOutputStream;
+    iget-object v6, p0, Lcom/squareup/okhttp/internal/spdy/Huffman;->root:Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    .line 129
+    .local v6, node:Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+    const/4 v3, 0x0
+
+    .line 130
+    .local v3, current:I
+    const/4 v5, 0x0
+
+    .line 131
+    .local v5, nbits:I
+    const/4 v4, 0x0
+
+    .local v4, i:I
+    :goto_0
+    array-length v7, p1
+
+    if-ge v4, v7, :cond_3
+
+    .line 132
+    aget-byte v7, p1, v4
+
+    and-int/lit16 v0, v7, 0xff
+
+    .line 133
+    .local v0, b:I
+    shl-int/lit8 v7, v3, 0x8
+
+    or-int v3, v7, v0
+
+    .line 134
+    add-int/lit8 v5, v5, 0x8
+
+    .line 135
+    :goto_1
+    const/16 v7, 0x8
+
+    if-lt v5, v7, :cond_1
+
+    .line 136
+    add-int/lit8 v7, v5, -0x8
+
+    ushr-int v7, v3, v7
+
+    and-int/lit16 v2, v7, 0xff
+
+    .line 137
+    .local v2, c:I
+    #getter for: Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->children:[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+    invoke-static {v6}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->access$000(Lcom/squareup/okhttp/internal/spdy/Huffman$Node;)[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    move-result-object v7
+
+    aget-object v6, v7, v2
+
+    .line 138
+    #getter for: Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->children:[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+    invoke-static {v6}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->access$000(Lcom/squareup/okhttp/internal/spdy/Huffman$Node;)[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    move-result-object v7
+
+    if-nez v7, :cond_0
+
+    .line 140
+    #getter for: Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->symbol:I
+    invoke-static {v6}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->access$100(Lcom/squareup/okhttp/internal/spdy/Huffman$Node;)I
+
+    move-result v7
+
+    invoke-virtual {v1, v7}, Ljava/io/ByteArrayOutputStream;->write(I)V
+
+    .line 141
+    #getter for: Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->terminalBits:I
+    invoke-static {v6}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->access$200(Lcom/squareup/okhttp/internal/spdy/Huffman$Node;)I
+
+    move-result v7
+
+    sub-int/2addr v5, v7
+
+    .line 142
+    iget-object v6, p0, Lcom/squareup/okhttp/internal/spdy/Huffman;->root:Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    goto :goto_1
+
+    .line 145
+    :cond_0
+    add-int/lit8 v5, v5, -0x8
+
+    goto :goto_1
+
+    .line 131
+    .end local v2           #c:I
+    :cond_1
+    add-int/lit8 v4, v4, 0x1
+
+    goto :goto_0
+
+    .line 156
+    .end local v0           #b:I
+    .restart local v2       #c:I
+    :cond_2
+    #getter for: Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->symbol:I
+    invoke-static {v6}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->access$100(Lcom/squareup/okhttp/internal/spdy/Huffman$Node;)I
+
+    move-result v7
+
+    invoke-virtual {v1, v7}, Ljava/io/ByteArrayOutputStream;->write(I)V
+
+    .line 157
+    #getter for: Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->terminalBits:I
+    invoke-static {v6}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->access$200(Lcom/squareup/okhttp/internal/spdy/Huffman$Node;)I
+
+    move-result v7
+
+    sub-int/2addr v5, v7
+
+    .line 158
+    iget-object v6, p0, Lcom/squareup/okhttp/internal/spdy/Huffman;->root:Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    .line 150
+    .end local v2           #c:I
+    :cond_3
+    if-lez v5, :cond_4
+
+    .line 151
+    rsub-int/lit8 v7, v5, 0x8
+
+    shl-int v7, v3, v7
+
+    and-int/lit16 v2, v7, 0xff
+
+    .line 152
+    .restart local v2       #c:I
+    #getter for: Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->children:[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+    invoke-static {v6}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->access$000(Lcom/squareup/okhttp/internal/spdy/Huffman$Node;)[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    move-result-object v7
+
+    aget-object v6, v7, v2
+
+    .line 153
+    #getter for: Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->children:[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+    invoke-static {v6}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->access$000(Lcom/squareup/okhttp/internal/spdy/Huffman$Node;)[Lcom/squareup/okhttp/internal/spdy/Huffman$Node;
+
+    move-result-object v7
+
+    if-nez v7, :cond_4
+
+    #getter for: Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->terminalBits:I
+    invoke-static {v6}, Lcom/squareup/okhttp/internal/spdy/Huffman$Node;->access$200(Lcom/squareup/okhttp/internal/spdy/Huffman$Node;)I
+
+    move-result v7
+
+    if-le v7, v5, :cond_2
+
+    .line 161
+    .end local v2           #c:I
+    :cond_4
+    invoke-virtual {v1}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
+
+    move-result-object v7
+
+    return-object v7
+.end method
+
+.method encode([BLjava/io/OutputStream;)V
+    .locals 10
+    .parameter "data"
+    .parameter "out"
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+
+    .prologue
+    .line 90
+    const-wide/16 v2, 0x0
+
+    .line 91
+    .local v2, current:J
+    const/4 v5, 0x0
+
+    .line 93
+    .local v5, n:I
+    const/4 v4, 0x0
+
+    .local v4, i:I
+    :goto_0
+    array-length v7, p1
+
+    if-ge v4, v7, :cond_1
+
+    .line 94
+    aget-byte v7, p1, v4
+
+    and-int/lit16 v0, v7, 0xff
+
+    .line 95
+    .local v0, b:I
+    sget-object v7, Lcom/squareup/okhttp/internal/spdy/Huffman;->CODES:[I
+
+    aget v1, v7, v0
+
+    .line 96
+    .local v1, code:I
+    sget-object v7, Lcom/squareup/okhttp/internal/spdy/Huffman;->CODE_LENGTHS:[B
+
+    aget-byte v6, v7, v0
+
+    .line 98
+    .local v6, nbits:I
+    shl-long/2addr v2, v6
+
+    .line 99
+    int-to-long v8, v1
+
+    or-long/2addr v2, v8
+
+    .line 100
+    add-int/2addr v5, v6
+
+    .line 102
+    :goto_1
+    const/16 v7, 0x8
+
+    if-lt v5, v7, :cond_0
+
+    .line 103
+    add-int/lit8 v5, v5, -0x8
+
+    .line 104
+    shr-long v8, v2, v5
+
+    long-to-int v7, v8
+
+    invoke-virtual {p2, v7}, Ljava/io/OutputStream;->write(I)V
+
+    goto :goto_1
+
+    .line 93
+    :cond_0
+    add-int/lit8 v4, v4, 0x1
+
+    goto :goto_0
+
+    .line 108
+    .end local v0           #b:I
+    .end local v1           #code:I
+    .end local v6           #nbits:I
+    :cond_1
+    if-lez v5, :cond_2
+
+    .line 109
+    rsub-int/lit8 v7, v5, 0x8
+
+    shl-long/2addr v2, v7
+
+    .line 110
+    const/16 v7, 0xff
+
+    ushr-int/2addr v7, v5
+
+    int-to-long v8, v7
+
+    or-long/2addr v2, v8
+
+    .line 111
+    long-to-int v7, v2
+
+    invoke-virtual {p2, v7}, Ljava/io/OutputStream;->write(I)V
+
+    .line 113
+    :cond_2
+    return-void
+.end method
+
+.method encodedLength([B)I
+    .locals 7
+    .parameter "bytes"
+
+    .prologue
+    .line 116
+    const-wide/16 v2, 0x0
+
+    .line 118
+    .local v2, len:J
+    const/4 v1, 0x0
+
+    .local v1, i:I
+    :goto_0
+    array-length v4, p1
+
+    if-ge v1, v4, :cond_0
+
+    .line 119
+    aget-byte v4, p1, v1
+
+    and-int/lit16 v0, v4, 0xff
+
+    .line 120
+    .local v0, b:I
+    sget-object v4, Lcom/squareup/okhttp/internal/spdy/Huffman;->CODE_LENGTHS:[B
+
+    aget-byte v4, v4, v0
+
+    int-to-long v4, v4
+
+    add-long/2addr v2, v4
+
+    .line 118
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    .line 123
+    .end local v0           #b:I
+    :cond_0
+    const-wide/16 v4, 0x7
+
+    add-long/2addr v4, v2
+
+    const/4 v6, 0x3
+
+    shr-long/2addr v4, v6
+
+    long-to-int v4, v4
+
+    return v4
+.end method
