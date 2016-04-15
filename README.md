@@ -7,3 +7,6 @@ yanbin9296@gmail.com
 刚发现的很赞的网站
 #各类dialog demo 
 https://github.com/kalnemi
+
+
+#https://github.com/Marswin/MarsDaemon 进程常驻
