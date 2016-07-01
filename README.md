@@ -10,3 +10,4 @@ https://github.com/kalnemi
 
 
 #https://github.com/Marswin/MarsDaemon 进程常驻
+#https://github.com/android10/Android-CleanArchitecture google官方mvp sample 写的很棒 解耦合分离复杂度  可复用
