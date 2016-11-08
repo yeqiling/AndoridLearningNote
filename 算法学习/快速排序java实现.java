@@ -1,10 +1,11 @@
-package com.henmao.app.controller.fragment.main;
+﻿package com.henmao.app.controller.fragment.main;
 
 /**
  * Created by Administrator on 2016/3/25.
  */
 public class QucikSort {
     void qucikSort(int arr[],int l,int r){
+	if(l<r){
         int low=l,high=r;
         int key=arr[low];//key
         while(low<high){
@@ -23,5 +24,6 @@ public class QucikSort {
         arr[low]=key;
         qucikSort(arr,l,low-1);
         qucikSort(arr,low+1,r);
+	}
     }
 }
